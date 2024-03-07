@@ -1,16 +1,15 @@
-import axios from "axios";
-import { injectable } from "inversify";
-import "reflect-metadata";
-
-import { configEnvironment } from "@core/environment";
+import { configEnvironment } from '@core/environment';
+import axios from 'axios';
+import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
 
 @injectable()
 export class GetProduct {
-	businessId = "65848f94cf9d81d1517a76d0";
-	// constructor(@inject(BUSINESS_ID) private readonly businessId: string) {}
+	constructor(@inject('ACCOUNT') private readonly accountState: any) {}
 
 	get Endpoint() {
-		return `${configEnvironment.API_QUICKLY_SERVICE}/restaurant/${this.businessId}/product`;
+		console.log('account => url', this.accountState);
+		return `${configEnvironment.API_QUICKLY_SERVICE}/restaurant/${this.accountState.storeId}/product`;
 	}
 
 	public async execute() {

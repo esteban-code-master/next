@@ -1,17 +1,12 @@
+'use client';
+
 import { GetProduct } from '@module/business/infrastructure/api/get-product';
-import { Container, injectable } from 'inversify';
+import { Container } from 'inversify';
 import 'reflect-metadata';
-
-@injectable()
-export class Example {
-    public get() {
-        return "prueba de inversify";
-    }
-}
-
+import { storeProvider } from './ejemplo';
 
 const container = new Container();
+container.load(storeProvider);
 container.bind<GetProduct>('GetProduct').to(GetProduct);
 
 export { container };
-

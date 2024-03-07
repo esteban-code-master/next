@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { container } from "@core/inversify/inversify.config";
-import { store } from "@core/store/index";
-import { Provider as Test } from "inversify-react";
-import React from "react";
-import { Provider } from "react-redux";
+import { container } from '@core/inversify/inversify.config';
+import { store } from '@core/store/index';
+import { Provider as Test } from 'inversify-react';
+import React from 'react';
+import { Provider } from 'react-redux';
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
 	return (
@@ -12,4 +12,10 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
 			<Provider store={store}>{children}</Provider>;
 		</Test>
 	);
+
+	// return (
+	// 	<Provider store={store}>
+	// 		<Test container={container}>{children}</Test>
+	// 	</Provider>
+	// );
 };

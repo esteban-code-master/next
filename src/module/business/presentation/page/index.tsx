@@ -1,8 +1,8 @@
 "use client";
-import { UseGetProduct } from "../hooks/use-get-product";
+import { useGetProduct } from "../hooks/use-get-product";
 
 export const BusinessPage = () => {
-	const product = UseGetProduct();
+	const product = useGetProduct();
 
 	console.log(product);
 	return <>iniciando</>;
