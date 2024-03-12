@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>
+			<body className={`${inter.className} bg-[#F6F8F9]`}>
 				<ThemeProvider theme={theme}>
 					<Providers>
 						<div className="container">

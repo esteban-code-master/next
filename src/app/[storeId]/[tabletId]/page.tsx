@@ -1,17 +1,20 @@
 'use client';
 
-import { useAppDispatch } from '@core/store/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '@core/store/hooks/hooks';
 import { setAccount } from '@core/store/slice/account';
 import { BusinessPage } from '@module/business/presentation/page';
 import { useEffect } from 'react';
 
 const Home = (req: any) => {
-	const { storeId, tabletId: tableNumber } = req.params;
+	const { storeId, tabletId } = req.params;
+	const accountStore = useAppSelector((state) => state.account);
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		dispatch(setAccount({ storeId, tableNumber }));
-	}, [dispatch, storeId, tableNumber]);
+		if (accountStore.clientName !== undefined) {
+			dispatch(setAccount({ storeId, tableNumber: Number(tabletId) }));
+		}
+	}, [dispatch, storeId, tabletId, accountStore.clientName]);
 
 	return (
 		<div>

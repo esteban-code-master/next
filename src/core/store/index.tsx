@@ -13,22 +13,16 @@ export const store = configureStore({
 	},
 	preloadedState: {
 		account: (() => {
-			// const storedAccount = window.localStorage.getItem("account");
-			// return storedAccount ? JSON.parse(storedAccount) : {};
-
-			if (typeof localStorage === 'function') {
-				// La función no está definida o es null
-				console.log('localstorage', localStorage);
+			if (typeof localStorage !== 'undefined') {
+				const storedAccount = localStorage.getItem('account');
+				return storedAccount ? JSON.parse(storedAccount) : {};
 			}
-
-			return {};
 		})(),
 		shopCart: (() => {
-			// const shopCartStorage = localStorage.getItem('shopCart');
-
-			// const shopCartStorage = '{}'
-			// return shopCartStorage ? JSON.parse(shopCartStorage) : [];
-			return [];
+			if (typeof localStorage !== 'undefined') {
+				const shopCartStorage = localStorage.getItem('shopCart');
+				return shopCartStorage ? JSON.parse(shopCartStorage) : [];
+			}
 		})()
 	}
 });

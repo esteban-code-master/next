@@ -28,7 +28,7 @@ export const shopCartSlice = createSlice({
     initialState: initialState,
     reducers: {
 		addProductSelect: (state, action: PayloadAction<IProductSelect>) => {
-			console.log("==>", state)
+			
 			state.push(action.payload)
 			localStorage.setItem('shopCart', JSON.stringify(state))
 		},

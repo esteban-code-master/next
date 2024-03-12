@@ -1,9 +1,22 @@
-"use client";
-import { useGetProduct } from "../hooks/use-get-product";
+'use client';
+import { useAppSelector } from '@core/store/hooks/hooks';
+import { IProduct } from '@module/product/application/interface/product';
+import { ProductMenuCard } from '@module/product/presentation/components/productMenuCard';
+import { AccountOpen } from '../components/account-open';
+import { useGetProduct } from '../hooks/use-get-product';
 
 export const BusinessPage = () => {
-	const product = useGetProduct();
+	const account = useAppSelector((state) => state.account);
+	const products = useGetProduct();
 
-	console.log(product);
-	return <>iniciando</>;
+	return (
+		<>
+			{!account.clientName && <AccountOpen />}
+
+			{products &&
+				products.map((product: IProduct, index: number) => (
+					<ProductMenuCard key={index} product={product} />
+				))}
+		</>
+	);
 };

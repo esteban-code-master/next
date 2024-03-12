@@ -1,49 +1,49 @@
-"use client";
+'use client';
 
-import { red } from "@mui/material/colors";
-import { createTheme } from "@mui/material/styles";
+import { red } from '@mui/material/colors';
+import { createTheme } from '@mui/material/styles';
 
-import { poppins } from "./fonts";
+import { poppins } from './fonts';
 
 const theme = createTheme({
 	palette: {
 		primary: {
-			main: "#2442AF",
+			main: '#2442AF'
 		},
 		secondary: {
-			main: "#19857b",
+			main: '#19857b'
 		},
 		error: {
-			main: red.A400,
-		},
+			main: red.A400
+		}
 	},
 	typography: {
-		fontFamily: poppins.style.fontFamily,
+		fontFamily: poppins.style.fontFamily
 	},
 	components: {
 		MuiTypography: {
 			styleOverrides: {
 				h1: {
-					fontSize: 30,
+					fontSize: 30
 				},
 				h2: {
 					fontSize: 18,
-					fontWeight: "bold",
-					color: "#1E1F21",
+					fontWeight: 'bold',
+					color: '#1E1F21'
 				},
 				h3: {
-					fontSize: "16px !important",
-				},
-			},
+					fontSize: '16px !important'
+				}
+			}
 		},
 		MuiTextField: {
 			styleOverrides: {
 				root: {
-					width: "100%",
-				},
-			},
-		},
-	},
+					width: '100%'
+				}
+			}
+		}
+	}
 });
 
 export default theme;
