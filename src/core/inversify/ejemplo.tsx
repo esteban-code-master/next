@@ -1,5 +1,6 @@
 'use client';
 
+import { Environment, configEnvironment } from '@core/environment';
 import { IAccount } from '@core/store/slice/account';
 import { ContainerModule } from 'inversify';
 
@@ -11,4 +12,8 @@ export const storeProvider = new ContainerModule((bind) => {
 
 		return {};
 	});
+});
+
+export const EnvironmentProvider = new ContainerModule((bind) => {
+	bind<Environment>('ENVIRONMENT').toDynamicValue(() => configEnvironment);
 });

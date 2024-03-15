@@ -26,11 +26,9 @@ export default function RootLayout({
 			<body className={`${inter.className} bg-[#F6F8F9]`}>
 				<ThemeProvider theme={theme}>
 					<Providers>
-						<div className="container">
-							<Header />
-							<div>{children}</div>
-							<Toolbar />
-						</div>
+						<Header />
+						<div className="container">{children}</div>
+						<Toolbar />
 					</Providers>
 				</ThemeProvider>
 			</body>
