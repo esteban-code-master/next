@@ -33,7 +33,8 @@ const config: Config = {
 			"disabled": "#7F9FB1",
 			"paragraph": "#7F9FB1",
 			'white': '#ffffff !important',
-			'success': '#40A741'
+			'success': '#40A741',
+			'text': '#303F4A'
 		},		
 	},
 	plugins: [],

@@ -1,20 +1,22 @@
-"use client";
-import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import ContactMailIcon from "@mui/icons-material/ContactMail";
-import HomeIcon from "@mui/icons-material/Home";
-import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+'use client';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 // import { useSocket } from '@socket/hooks/use-socket';
-import "./style.css";
+import {
+	HomeIcon,
+	QrIcon,
+	ShopCartIcon,
+	TicketIcon
+} from '@module/core/presentation/components/icons/customIcons';
+import { Box, Typography } from '@mui/material';
+import './style.css';
 
 export const Toolbar = () => {
 	// const socket = io(configEnvironment.API_QUICKLY_SERVICE_WEBSOCKET);
 	const [store, setStore] = useState({
-		storeId: "",
-		tableId: "",
+		storeId: '',
+		tableId: ''
 	});
 
 	// const socketRef = useSocket();
@@ -27,36 +29,37 @@ export const Toolbar = () => {
 	}, []);
 
 	return (
-		<div className="tollbar">
+		<Box className="toolbar">
 			<Link
-				className="tollbar-item"
+				className=" flex flex-col items-center"
 				href={`/${store.storeId}/${store.tableId}`}
 			>
-				<HomeIcon sx={{ color: "black" }} />
+				<HomeIcon />
+				<Typography component="span" className="text-[10px] text-text">
+					Home
+				</Typography>
 			</Link>
 
-			<Link
-				className="tollbar-item"
-				href=""
-				onClick={() => {
-					// socketRef.current?.emit(`notification`, {
-					// 	storeId: store.storeId,
-					// 	tableId: store.tableId
-					// });
-				}}
-			>
-				<PhoneEnabledIcon sx={{ color: "black" }} />
+			<Link className=" flex flex-col items-center" href="/contact-us">
+				<TicketIcon />
+				<Typography component="span" className="text-[10px] text-text">
+					Ordenes
+				</Typography>
 			</Link>
 
-			<Link className="tollbar-item" href="/contact-us">
-				<ContactMailIcon sx={{ color: "black" }} />
+			<Link className=" flex flex-col items-center" href="/shop-cart">
+				<ShopCartIcon />
+				<Typography component="span" className="text-[10px] text-text">
+					Carrito
+				</Typography>
 			</Link>
 
-			<Link className="tollbar-item" href="/shop-cart">
-				<ShoppingCartIcon sx={{ color: "black" }} />
+			<Link className=" flex flex-col items-center" href="/shop-cart">
+				<QrIcon />
+				<Typography component="span" className="text-[10px] text-text">
+					Unir cuentas
+				</Typography>
 			</Link>
-
-			<CameraAltIcon sx={{ color: "black" }} />
-		</div>
+		</Box>
 	);
 };
