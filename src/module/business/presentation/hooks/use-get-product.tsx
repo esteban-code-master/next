@@ -5,18 +5,20 @@ import { IProduct } from '@module/product/application/interface/product';
 import { useContainer } from 'inversify-react';
 import { useEffect, useState } from 'react';
 
-export const useGetProduct = () => {
+export const useGetProduct = (category: string) => {
 	const [product, setProduct] = useState<IProduct[]>();
 	const container = useContainer();
 	const getProduct = container.get<GetProduct>('GetProduct');
 
 	useEffect(() => {
-		getProduct.execute().then((response: any) => {
-			if (response.data.headers.success) {
-				setProduct(response.data.response);
-			}
-		});
-	}, []);
+		if (category) {
+			getProduct.execute(category).then((response: any) => {
+				if (response.data.headers.success) {
+					setProduct(response.data.response);
+				}
+			});
+		}
+	}, [category]);
 
 	return product;
 };

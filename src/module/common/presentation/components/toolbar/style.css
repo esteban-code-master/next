@@ -1,5 +1,5 @@
 .toolbar {
-	position: fixed;
+	position: sticky;
 	z-index: 1;
 	bottom: 0;
 	left: 0;

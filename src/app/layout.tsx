@@ -27,7 +27,7 @@ export default function RootLayout({
 				<ThemeProvider theme={theme}>
 					<Providers>
 						<Header />
-						<div className="container">{children}</div>
+						<div>{children}</div>
 						<Toolbar />
 					</Providers>
 				</ThemeProvider>

@@ -12,7 +12,7 @@ export class GetProduct {
 		return `${configEnvironment.API_QUICKLY_SERVICE}/restaurant/${this.accountState.storeId}/product`;
 	}
 
-	public async execute() {
-		return await axios.get(this.Endpoint);
+	public async execute(category: string) {
+		return await axios.get(`${this.Endpoint}?category=${category}`);
 	}
 }
