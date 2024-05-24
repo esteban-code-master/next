@@ -1,22 +1,33 @@
 import { Language } from "@module/core/application/interface/language"
 
-export interface IProduct {
+
+export interface Product {
 	_id: string
+	image: string
+	name: string
+	price: number
+	description: string
+	upgrade: Upgrade[]
 	storeId: string
 	areaId: string
-	categoryId: Array<string>
-	language:  Language
+	categoryId: string[]
+	language: Language
 	status: boolean
 	check: boolean
-	default: ISubProduct
-	subProduct: Array<ISubProduct>
 }
 
-export interface ISubProduct {
+export interface Upgrade {
+	titulo: string
+	requiere: boolean
+	multiple: boolean
+	limit: number
+	subProduct: SubProduct[]
+}
+
+export interface SubProduct {
+	_id?: string
 	name: string
-	image: string
-	description: string
 	price: number
-	default: boolean
-	key: string
+	status: boolean
+	description: string
 }

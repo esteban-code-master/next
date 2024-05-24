@@ -11,7 +11,7 @@ import { ReviewOrderCardProps } from './reviewOrderCardProps';
 export const ReviewOrderCard: FunctionComponent<ReviewOrderCardProps> = (
 	props
 ) => {
-	const { productSelect } = props;
+	const { productSelect, deleteProduct } = props;
 
 	return (
 		<Box component={'div'} className="bg-white flex rounded-lg p-4">
@@ -37,7 +37,7 @@ export const ReviewOrderCard: FunctionComponent<ReviewOrderCardProps> = (
 				</Typography>
 			</Box>
 			<div className="flex-1 flex  flex-col items-end w-[40px]">
-				<Button className="bg-[#EBF0F3] rounded-xl py-4">
+				<Button className="bg-[#EBF0F3] rounded-xl py-4" onClick={deleteProduct}>
 					<DeleteIcon className="text-[black]" />
 				</Button>
 			</div>

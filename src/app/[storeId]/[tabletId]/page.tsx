@@ -14,13 +14,14 @@ const Home = (req: any) => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		if (accountStore.clientName !== undefined) {
+		console.log('exutar..');
+		if (accountStore.clientName !== undefined || accountStore) {
 			dispatch(setAccount({ storeId, tableNumber: Number(tabletId) }));
 		}
 	}, [dispatch, storeId, tabletId, accountStore.clientName]);
 
 	return (
-		<div className="relative">
+		<div className="relative flex-1">
 			<BusinessPage />
 		</div>
 	);

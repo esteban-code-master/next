@@ -1,6 +1,6 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-// import { IProduct } from "@menu/interface/product";
+import { SubProduct } from "@module/product/application/interface/product";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 
 export interface IShopCart {
@@ -18,7 +18,7 @@ export interface IProductSelect {
 	note: string;
 	count: number;
 	image?: string | undefined;
-	key: string
+	upgrade?: SubProduct[]
 }
 
 const initialState: IProductSelect[] = []

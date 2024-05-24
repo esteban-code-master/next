@@ -32,6 +32,7 @@ export const AccountOpen = () => {
 
 		if (accountOpen.data.headers.success) {
 			dispatch(setAccount({ clientName, id: accountOpen.data.response._id }));
+			window.location.reload();
 		}
 	};
 

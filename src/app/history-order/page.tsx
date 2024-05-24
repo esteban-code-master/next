@@ -12,12 +12,15 @@ const HistoryOrderPage = () => {
 	console.log(getProduct.get());
 
 	return (
-		<Box>
+		<Box component="div" className="flex-1 p-4">
 			<Typography variant="h1" className="font-semibold">
 				Historial de Ordenes
 			</Typography>
 			<Box component="div" className="">
-				<StatusOrderCard status={StatusOrder.ok} label="Estatus de la orden" />
+				<StatusOrderCard
+					status={StatusOrder.preparing}
+					label="Estatus de la orden"
+				/>
 			</Box>
 		</Box>
 	);

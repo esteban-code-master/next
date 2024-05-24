@@ -8,7 +8,7 @@ import { ProductOrderCardProps } from './productOrderCardProps';
 const image =
 	'public/images/shops/Boneless-871642d1-d8cb-4805-88fc-04fc6c134a9a/202-tortas-de-jamoÌn-y-queso-fbf3-1703640186435.jpg';
 const ProductOrderCard: FunctionComponent<ProductOrderCardProps> = (props) => {
-	const {} = props;
+	const { product } = props;
 
 	return (
 		<Box
@@ -20,14 +20,20 @@ const ProductOrderCard: FunctionComponent<ProductOrderCardProps> = (props) => {
 				alt=""
 				width="48"
 				height="48"
-				src={`${configEnvironment.CONTAINER_IMAGES_SHOPS}/${image}`}
+				src={`${configEnvironment.CONTAINER_IMAGES_SHOPS}/${product.subProduct[0].image}`}
 			/>
 			<Box component="div" className="flex flex-col justify-between flex-1">
-				<Typography className="font-bold text-title">Pozole</Typography>
-				<Typography className="text-blue-dark">1 orden</Typography>
+				<Typography className="font-bold text-title">
+					{product.subProduct[0].name}
+				</Typography>
+				<Typography className="text-blue-dark">
+					{product.subProduct.length} orden
+				</Typography>
 			</Box>
 			<Box component="div">
-				<Typography className="text-title">{formatCurrency(100)}</Typography>
+				<Typography className="text-title">
+					{formatCurrency(product.subProduct[0].price)}
+				</Typography>
 			</Box>
 		</Box>
 	);

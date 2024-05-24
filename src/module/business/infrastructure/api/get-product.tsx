@@ -13,6 +13,10 @@ export class GetProduct {
 	}
 
 	public async execute(category: string) {
-		return await axios.get(`${this.Endpoint}?category=${category}`);
+		return await axios.get(`${this.Endpoint}?category=${category}`, {
+			headers: {
+				Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiX2lkIjoiNjRjNDM3MmQyMTc3Njc3M2NlZmM1OTk0IiwiaWF0IjoxNzE2MzMzNTA0fQ.WOuVE22NyO9eNSDYMPPQjSwpoY4R00Rwb58oOUhyDlA`
+			}
+		});
 	}
 }

@@ -1,8 +1,5 @@
 'use client';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-
-// import { useSocket } from '@socket/hooks/use-socket';
+import { useAppSelector } from '@core/store/hooks/hooks';
 import {
 	HomeIcon,
 	QrIcon,
@@ -10,29 +7,18 @@ import {
 	TicketIcon
 } from '@module/core/presentation/components/icons/customIcons';
 import { Box, Typography } from '@mui/material';
+import Link from 'next/link';
 import './style.css';
 
 export const Toolbar = () => {
-	// const socket = io(configEnvironment.API_QUICKLY_SERVICE_WEBSOCKET);
-	const [store, setStore] = useState({
-		storeId: '',
-		tableId: ''
-	});
+	const accountStorage = useAppSelector((state) => state.account);
 
-	// const socketRef = useSocket();
-
-	useEffect(() => {
-		// const getStore = JSON.parse(localStorage.getItem('store') ?? '{}');
-		// if (getStore && getStore != '{}') {
-		// 	setStore(getStore);
-		// }
-	}, []);
-
+	console.log('account', accountStorage);
 	return (
 		<Box className="toolbar">
 			<Link
 				className=" flex flex-col items-center"
-				href={`/${store.storeId}/${store.tableId}`}
+				href={`/${accountStorage.storeId}/${accountStorage.tableNumber}`}
 			>
 				<HomeIcon />
 				<Typography component="span" className="text-[10px] text-text">
@@ -40,21 +26,21 @@ export const Toolbar = () => {
 				</Typography>
 			</Link>
 
-			<Link className=" flex flex-col items-center" href="/contact-us">
+			<Link className=" flex flex-col items-center" href="/shop-cart">
 				<TicketIcon />
 				<Typography component="span" className="text-[10px] text-text">
 					Ordenes
 				</Typography>
 			</Link>
 
-			<Link className=" flex flex-col items-center" href="/shop-cart">
+			<Link className=" flex flex-col items-center" href="/history-order">
 				<ShopCartIcon />
 				<Typography component="span" className="text-[10px] text-text">
 					Carrito
 				</Typography>
 			</Link>
 
-			<Link className=" flex flex-col items-center" href="/shop-cart">
+			<Link className=" flex flex-col items-center" href="/">
 				<QrIcon />
 				<Typography component="span" className="text-[10px] text-text">
 					Unir cuentas

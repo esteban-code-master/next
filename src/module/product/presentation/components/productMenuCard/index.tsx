@@ -4,7 +4,7 @@ import React, { FunctionComponent, useState } from 'react';
 
 import { configEnvironment } from '@core/environment';
 import { formatCurrency } from '@module/core/application/utils/currency/format';
-import { IProduct } from '@module/product/application/interface/product';
+import { Product } from '@module/product/application/interface/product';
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import { ProductDetailSwipeable } from '../productDetailSwipeable';
@@ -16,11 +16,11 @@ export const ProductMenuCard: FunctionComponent<ProductMenuCardProps> = (
 	const { product } = props;
 
 	const [openDrawer, setOpenDrawer] = useState(false);
-	const [selectProduct, setSelectProduct] = useState<IProduct>({} as IProduct);
+	const [selectProduct, setSelectProduct] = useState<Product>({} as Product);
 
 	return (
 		<React.Fragment>
-			{selectProduct?.default && (
+			{selectProduct._id && (
 				<ProductDetailSwipeable
 					product={selectProduct}
 					anchor="bottom"
@@ -39,12 +39,12 @@ export const ProductMenuCard: FunctionComponent<ProductMenuCardProps> = (
 				}}
 			>
 				<Box>
-					<Typography className="text-d font-bold">
-						{product.default.name}
+					<Typography className="text-d font-bold">{product.name}</Typography>
+					<Typography className="text-sm">
+						{product.description?.slice(0, 50)}
 					</Typography>
-					<Typography className="text-sm">{product.default.description}</Typography>
 					<Typography className="text-sm mt-5">
-						{formatCurrency(product.default.price)}
+						{formatCurrency(product.price)}
 					</Typography>
 				</Box>
 				<Box>
@@ -53,7 +53,7 @@ export const ProductMenuCard: FunctionComponent<ProductMenuCardProps> = (
 						alt=""
 						width="100"
 						height="140"
-						src={`${configEnvironment.CONTAINER_IMAGES_SHOPS}/${product.default.image}`}
+						src={`${configEnvironment.CONTAINER_IMAGES_SHOPS}/${product.image}`}
 					/>
 				</Box>
 			</Box>

@@ -2,7 +2,7 @@
 import { configEnvironment } from '@core/environment';
 import { useAppSelector } from '@core/store/hooks/hooks';
 import { useGetCategory } from '@module/product/application/hooks/useGetCategory';
-import { IProduct } from '@module/product/application/interface/product';
+import { Product } from '@module/product/application/interface/product';
 import { ProductCategoryTabsProps } from '@module/product/presentation/components/productCategoryTabs';
 import { ProductMenuCard } from '@module/product/presentation/components/productMenuCard';
 import { Box, Typography } from '@mui/material';
@@ -57,7 +57,7 @@ export const BusinessPage = () => {
 
 			<Box component="div" className="flex flex-col gap-5 container my-7 ">
 				{products &&
-					products.map((product: IProduct, index: number) => (
+					products.map((product: Product, index: number) => (
 						<ProductMenuCard key={index} product={product} />
 					))}
 			</Box>

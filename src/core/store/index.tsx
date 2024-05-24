@@ -15,6 +15,7 @@ export const store = configureStore({
 		account: (() => {
 			if (typeof localStorage !== 'undefined') {
 				const storedAccount = localStorage.getItem('account');
+
 				return storedAccount ? JSON.parse(storedAccount) : {};
 			}
 		})(),
