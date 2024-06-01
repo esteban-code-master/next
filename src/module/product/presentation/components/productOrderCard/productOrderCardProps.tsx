@@ -1,4 +1,4 @@
-import { Product } from '@module/orders/application/interface/order-response';
+import { Product } from "@module/business/infrastructure/interface/account";
 
 export interface ProductOrderCardProps {
 	product: Product;

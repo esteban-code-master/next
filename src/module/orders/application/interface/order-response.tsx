@@ -27,7 +27,6 @@ export interface Product {
 	categoryId: string[];
 	status: boolean;
 	check: boolean;
-	__v: number;
 }
 
 export interface Order {

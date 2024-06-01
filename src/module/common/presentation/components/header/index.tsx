@@ -1,28 +1,33 @@
-'use client';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
+"use client";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
-import { Box, Modal, TextField, Typography } from '@mui/material';
-import './header.css';
+import { useAppSelector } from "@core/store/hooks/hooks";
+import { useSocket } from "@module/socket/aplication/hooks/useSocket";
+import { Box, Modal, TextField, Typography } from "@mui/material";
+import "./header.css";
 
 const style = {
-	position: 'absolute' as 'absolute',
-	top: '50%',
-	left: '50%',
-	transform: 'translate(-50%, -50%)',
-	width: '90%',
-	bgcolor: 'background.paper',
-	border: 'none',
-	color: 'black',
+	position: "absolute" as "absolute",
+	top: "50%",
+	left: "50%",
+	transform: "translate(-50%, -50%)",
+	width: "90%",
+	bgcolor: "background.paper",
+	border: "none",
+	color: "black",
 	boxShadow: 24,
 	p: 4,
-	borderRadius: '8px'
+	borderRadius: "8px"
 };
 
 export const Header = () => {
 	// const storeApi = useMemo(() => new StoreService(), []);
 	// const [store, setStore] = useState<IStore>();
 	const [open, setOpen] = useState(false);
+	const socket = useSocket();
+	const accountStorage = useAppSelector((state) => state.account);
+	const [text, setText] = useState<string>("");
 
 	const [openText, setOpenText] = useState(false);
 	useEffect(() => {
@@ -39,11 +44,11 @@ export const Header = () => {
 	return (
 		<div className="navbar">
 			<div className="navbar-logo">
-				<Image width={82} height={32} alt="" src={'/icons/quickly.png'} />
+				<Image width={82} height={32} alt="" src={"/icons/quickly.png"} />
 				{/* <span>{store?.name}</span> */}
 			</div>
 			<Box className="navbar-count" component="div" onClick={() => setOpen(true)}>
-				<Image width={30} height={30} alt="" src={'/icons/call.svg'} />
+				<Image width={30} height={30} alt="" src={"/icons/call.svg"} />
 				<span className="navbar__title">Mesero</span>
 			</Box>
 
@@ -72,7 +77,10 @@ export const Header = () => {
 							name="clientName"
 							label="Agrega tu nombre aquí"
 							className="bg-[#EBF0F3]"
-							onChange={(e) => {}}
+							value={text}
+							onChange={(e) => {
+								setText(e.target.value);
+							}}
 						/>
 					)}
 					<button
@@ -80,6 +88,13 @@ export const Header = () => {
 						onClick={() => {
 							setOpen(false);
 							setOpenText(false);
+
+							socket.current?.emit(
+								`${accountStorage.storeId}/${accountStorage.tableNumber}`,
+								text
+							);
+
+							setText("");
 						}}
 					>
 						Solicitar un mesero
@@ -89,4 +104,3 @@ export const Header = () => {
 		</div>
 	);
 };
- 

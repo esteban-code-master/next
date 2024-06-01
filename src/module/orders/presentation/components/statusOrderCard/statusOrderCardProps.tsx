@@ -1,6 +1,8 @@
-import { StatusOrder } from '@module/orders/application/types/statusOrder';
+import { Product } from "@module/business/infrastructure/interface/account";
+import { ProductOrderStatus } from "@module/orders/application/const/statusOrder";
 
 export interface StatusOrderCardProps {
 	label: string;
-	status: StatusOrder[keyof StatusOrder];
+	status: ProductOrderStatus;
+	products: Product[];
 }

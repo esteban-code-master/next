@@ -1,4 +1,4 @@
 export type StatusOrder = {
-	ok: '@order/ok';
-	preparing: '@order/preparing';
+	ok: "@order/ok";
+	preparing: "@order/preparing";
 };

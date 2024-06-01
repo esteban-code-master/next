@@ -1,19 +1,19 @@
-'use client';
-import { useAppSelector } from '@core/store/hooks/hooks';
+"use client";
+import { useAppSelector } from "@core/store/hooks/hooks";
 import {
 	HomeIcon,
 	QrIcon,
 	ShopCartIcon,
 	TicketIcon
-} from '@module/core/presentation/components/icons/customIcons';
-import { Box, Typography } from '@mui/material';
-import Link from 'next/link';
-import './style.css';
+} from "@module/core/presentation/components/icons/customIcons";
+import { Box, Typography } from "@mui/material";
+import Link from "next/link";
+import "./style.css";
 
 export const Toolbar = () => {
 	const accountStorage = useAppSelector((state) => state.account);
 
-	console.log('account', accountStorage);
+	console.log("account", accountStorage);
 	return (
 		<Box className="toolbar">
 			<Link
@@ -40,7 +40,7 @@ export const Toolbar = () => {
 				</Typography>
 			</Link>
 
-			<Link className=" flex flex-col items-center" href="/">
+			<Link className=" flex flex-col items-center" href="/account">
 				<QrIcon />
 				<Typography component="span" className="text-[10px] text-text">
 					Unir cuentas
